@@ -31,9 +31,11 @@ def load_and_clean_ev_data():
     df = df.drop_duplicates()
     
     # 3. Clean string columns (Generic)
-    for col in df.select_dtypes(include=['object']).columns:
-        df[col] = df[col].astype(str).str.strip()
+    for col in df.select_dtypes(include=['object', 'string']).columns:
+        df[col] = df[col].fillna("Unknown").astype(str).str.strip()
         df.loc[df[col].str.lower() == 'nan', col] = "Unknown"
+        df.loc[df[col].str.lower() == '<na>', col] = "Unknown"
+        df.loc[df[col] == '', col] = "Unknown"
         
     # 4. Fix specific inconsistent Operator naming
     if 'Operator' in df.columns:
