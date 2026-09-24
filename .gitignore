@@ -1,4 +1,22 @@
-venv/
+# Environment variables / secrets
+.env
+*.env
+
+# Python
 __pycache__/
-*.py[cod]
+*.pyc
+*.pyo
+
+# IDE / OS
+.vscode/
 .DS_Store
+Thumbs.db
+
+# API credentials
+*credentials*
+*secret*
+*api_key*
+
+# Temporary files
+*.tmp
+*.log
