@@ -20,3 +20,5 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.log
+# OCM API response cache
+data/raw/ocm_cache/
